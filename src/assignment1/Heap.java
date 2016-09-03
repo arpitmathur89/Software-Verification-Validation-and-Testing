@@ -12,6 +12,7 @@ public class Heap {
 		this.capacity = capacity;
 		this.array = new int[capacity];
 	}
+	
 	//Parent of a Node
 	public int Parent(int i){
 		if(i<=0 || i>=this.count)
@@ -26,7 +27,7 @@ public class Heap {
 		return left;
 	}
 	public int RightChild(int i){
-		int right = 2*i+1;
+		int right = 2*i+2;
 		if(right>=this.count)
 			return -1;
 		return right;
@@ -48,12 +49,12 @@ public class Heap {
 			max = i;
 		if(r!=-1 && this.array[r]>this.array[max])
 			max = r;
-		if(max!=-1){
+		if(max!=i){
 			temp =  this.array[i];
 			this.array[i]=this.array[max];
 			this.array[max]=temp;
+			PercolateDown(max);
 		}
-		PercolateDown(max);
 	}
 	//Deleting an Element
 	int DeleteMax(){

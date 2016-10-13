@@ -2,9 +2,15 @@ package assignment3;
 
 public class HeapSort {
 	
-	public int[] HeapSort(int[] A, int n){
+	public int[] HeapSort(int[] A, int n) {
+		// 1st Bug
+		Integer x = new Integer(0);
+		//
+		// 2nd Bug
+		if(A.length < 0)
+			System.out.println("I can never be printed");
+		//
 		Heap h = new Heap(n,0);	
-		int x;
 		int i,temp;
 		int old_size;
 		h.BuildHeap(h,A,n);
@@ -16,6 +22,9 @@ public class HeapSort {
 			h.count--;
 			h.PercolateDown(0);
 		}
+		// 3rd Bug
+		h = null;
+		//
 		h.count=old_size;
 		for(int j=0;j<n;j++)
 			A[j]=h.array[j];
